@@ -4,6 +4,7 @@ import Card from "../Card/Card";
 const AllUser = () => {
   const [users, setUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState("name");
  
   useEffect(() => {
     fetch("https://dummyjson.com/users")
@@ -15,16 +16,31 @@ const AllUser = () => {
   }, []);
   console.log(users);
 //   
+ 
 const handleSearchChange = (event) => {
      setSearchQuery(event.target.value);
    };
  
-   const filteredUsers = users.filter(
+   const handleSortChange = (event) => {
+     setSortOption(event.target.value);
+   };
+ 
+   const sortedUsers = [...users].sort((a, b) => {
+     if (sortOption === "name") {
+       return a.firstName.localeCompare(b.firstName);
+     } else if (sortOption === "email") {
+       return a.email.localeCompare(b.email);
+     } else if (sortOption === "company") {
+       return a.company.name.localeCompare(b.company.name);
+     }
+     return 0;
+   });
+ 
+   const filteredUsers = sortedUsers.filter(
      (user) =>
        user.firstName.toLowerCase().includes(searchQuery.toLowerCase()) ||
        user.lastName.toLowerCase().includes(searchQuery.toLowerCase())
    );
-
    
 
 
@@ -33,6 +49,7 @@ const handleSearchChange = (event) => {
       <h2 className="text-center text-3xl my-3 font-bold">There are All user </h2>
        
        {/*  */}
+       <div className="flex ">
        <div className="mx-auto mb-3 w-[400px]">
         <input
           type="text"
@@ -43,6 +60,19 @@ const handleSearchChange = (event) => {
         />
       </div>
        {/*  */}
+       {/* sort by  */}
+       <select
+          value={sortOption}
+          onChange={handleSortChange}
+          className="border border-gray-300 rounded-md px-3 py-2 w-[400px] mx-auto"
+        >
+          <option value="name">Sort by Name</option>
+          <option value="email">Sort by Email</option>
+          <option value="company">Sort by Company Name</option>
+        </select>
+       
+       {/*  */}
+       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-3">
           {filteredUsers.length > 0 ? (
