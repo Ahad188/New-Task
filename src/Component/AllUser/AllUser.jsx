@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "../Card/Card";
-
+import "./alluser.css";
 const AllUser = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -14,9 +14,9 @@ const AllUser = () => {
     <>
       <h2 className="text-center text-3xl my-3 font-bold">There are All user </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 mx-3 my-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-3">
         {users && users.length > 0 ? (
-          users.slice(0, 6).map((user) => <Card key={user.id} user={user}></Card>)
+          users.map((user) => <Card key={user.id} user={user}></Card>)
         ) : (
           <p>No users found.</p>
         )}

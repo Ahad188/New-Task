@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.name{
+     font-family: 'Space Grotesk';
+     font-weight: 700;
+     font-size: 17px;
+     line-height: 20px;
+     color: #001F3F;
+     transition: all 0.4s ease-in-out;
+}
+.name:hover{
+     color: #FF5A30;
+}

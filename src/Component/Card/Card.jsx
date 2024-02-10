@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
+ 
+import { Link, useNavigate,   } from 'react-router-dom'
 import './cars.css'
 const Card = ({user}) => {
-     
+     const navigate = useNavigate();
   return (
     
      
@@ -14,14 +15,15 @@ const Card = ({user}) => {
                <li title='First Name' className='name'>Name: {user?.firstName} <span title='Last Name'>{user?.lastName}</span></li>
                <li title='Email' className='name'>Email : {user?.email}</li>
                </div>
-               <div className="flex justify-evenly my-3">
-               <li title='Company' className='name'>Company: {user?.company.name}</li>
-               <li title='Address' className='name'>Address: {user?.address.address}</li>
-               </div>
+               {/* <div className="flex mx-auto justify-between my-3"> */}
+               <li title='Address' className='name px-5 my-4'>Address: {user?.address.address}</li>
+               <li title='Company' className='name px-5 my-4'>Company: {user?.company.name}</li>
+               {/* </div> */}
           </ul>
           <div className="overlay-box">
-               <button className="add-cart">     
-                    <Link to={user?.id}>  <span>Details</span></Link>
+               <button className="add-cart" onClick={()=>navigate(`/single-dt/${user?.id}`)}>     
+                    
+                     <Link to= '/single-dt'> Details</Link>
                </button>
           </div>
      </div>

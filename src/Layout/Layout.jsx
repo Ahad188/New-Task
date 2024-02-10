@@ -8,7 +8,9 @@ const Layout = () => {
   return (
     <div>
      <Header></Header>
-     <Outlet></Outlet>
+     <div className='min-h-[calc(100vh - 350px)] my-28'>
+          <Outlet></Outlet>
+     </div>
      <Footer></Footer>
     </div>
   )
