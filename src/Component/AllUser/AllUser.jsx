@@ -49,8 +49,8 @@ const handleSearchChange = (event) => {
       <h2 className="text-center text-3xl my-3 font-bold">There are All user </h2>
        
        {/*  */}
-       <div className="flex ">
-       <div className="mx-auto mb-3 w-[400px]">
+       <div className="md:flex md:gap-5 ps-8 md:ps-20 md:w[900px] py-3">
+       <div className=" mb-3 w-[400px]">
         <input
           type="text"
           placeholder="Search by First Name or Last Name"
@@ -58,18 +58,19 @@ const handleSearchChange = (event) => {
           onChange={handleSearchChange}
           className="border border-gray-300 rounded-md px-3 py-2 w-full"
         />
-      </div>
-       {/*  */}
+       </div>
        {/* sort by  */}
-       <select
+      <div className="w-[400px] ">
+      <select
           value={sortOption}
           onChange={handleSortChange}
-          className="border border-gray-300 rounded-md px-3 py-2 w-[400px] mx-auto"
+          className="border border-gray-300 rounded-md py-2 w-full text-gray-500   "
         >
           <option value="name">Sort by Name</option>
           <option value="email">Sort by Email</option>
           <option value="company">Sort by Company Name</option>
         </select>
+      </div>
        
        {/*  */}
        </div>
@@ -78,7 +79,9 @@ const handleSearchChange = (event) => {
           {filteredUsers.length > 0 ? (
           filteredUsers.map((user) => <Card key={user.id} user={user} />)
                ) : (
-          <p>No users found.</p>
+          // <p className="text-center text-red-700 font-bold my-4">No users found.</p>
+
+          ''
           )}
 
 
