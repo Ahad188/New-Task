@@ -19,7 +19,7 @@ const SingleDetails = () => {
 console.log(user);
 
   return (
-          <div className="card card-side w-[800px] mx-auto  shadow-xl cursor-pointer">
+          <div className="card card-side w-[800px] mx-auto  shadow-xl cursor-pointer my-10">
                <figure><img src={user?.image} alt="avatar"/></figure>
                <div className="card-body">
                <h2 className="card-title ">First Name : <span className="name"> {user?.firstName}</span></h2>
